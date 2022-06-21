@@ -33,61 +33,15 @@ namespace PineBot
         }
     }
 
-
-    interface IServerConfig
+    interface IMessageHandler
     {
-        Action open { get; set; }
-        Action close { get; set; }
-        Action<string> msg { get; set; }
-
+           
     }
-    class Server
-    {
-        private string ipAddress { get; }
-        public Server(string ipStr)
-        {
-            ipAddress = ipStr;
-        }
-        public void Start(Action<IServerConfig> config)
-        {
-            Console.WriteLine("Connecting to {0} ...", ipAddress);
-            
-        }
-    }
-
-    class Config : IServerConfig
-    {
-        public Action open { get; set; }
-        public Action close { get; set; }
-
-        public Action<string> msg { get; set; }
-        
     }
     internal class Program
     {   
         static void Main(string[] args)
         {
-            var s = new Server("192.168.0.1");
-            s.Start(config =>
-            {
-                config.open = () =>
-                {
-                    Console.WriteLine("things while opening...");
-                };
-                config.close = (() =>
-                {
-                    Console.WriteLine("things while closing...");
-                });
-                config.msg = b =>
-                {
-                    Console.WriteLine(b);
-                };
-            });
-
-            void Fucn(IServerConfig config)
-            {
-                config.close();
-            }
             
             return;
             
