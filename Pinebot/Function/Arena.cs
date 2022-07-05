@@ -1,4 +1,4 @@
-﻿namespace PineBot;
+﻿namespace PineBot.Function;
 
 public class Arena
 {
