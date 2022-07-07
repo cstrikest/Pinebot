@@ -27,8 +27,8 @@ namespace PineBot
             }
 
             var handler = new MessageHandler();
-            
-            s.NewMessage += handler.OnMessage;
+            handler.LoadFuncions();
+            s.ReceiveJsonEvent += handler.OnMessage;
 
             while (true)
             {

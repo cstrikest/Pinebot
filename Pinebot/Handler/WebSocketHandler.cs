@@ -7,7 +7,7 @@ namespace PineBot.Handler;
 public class WebSocketHandler
 {
     private WebSocketServer server;
-    public event EventHandler<EventMessage> NewMessage;
+    public event EventHandler<EventMessage> ReceiveJsonEvent;
     public bool isConnected;
     public IWebSocketConnection? Conn;
     public ulong RecievedData { get; set; }
@@ -35,7 +35,7 @@ public class WebSocketHandler
                 Console.WriteLine(message);
                 try
                 {
-                    NewMessage?.Invoke(this, new EventMessage(JObject.Parse(message)));
+                    ReceiveJsonEvent?.Invoke(this, new EventMessage(JObject.Parse(message)));
                 }
                 catch (Exception e)
                 {

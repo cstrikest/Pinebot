@@ -16,12 +16,12 @@ public class EventMessage
 
 public class MetaEventMessage : EventMessage
 {
-    public string? meta_event_type { get; }
+    public string meta_event_type { get; }
 
     public MetaEventMessage(JObject J) : base(J)
     {
         this.J = J;
-        meta_event_type = (string?)J["meta_event_type"];
+        meta_event_type = (string)J["meta_event_type"];
     }
 }
 

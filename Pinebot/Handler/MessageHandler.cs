@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PineBot.Message;
+using PineBot.Function;
+using PineBot.Function.Arena;
+
 
 namespace PineBot.Handler;
 
@@ -29,5 +32,16 @@ font":0,"group_id":705124696,"message":"晋哥哥刀削面","message_type":"grou
 ","sex":"unknown","title":"","user_id":2391272987},"user_id":2391272987,"message_id":-689777213}
     
 */
+    }
+
+    public List<Addin> LoadFunctions()
+    {
+        //注册Arena的OnMessage方法进入MessageEventHandler事件。
+        var addins = new List<Addin>()
+        {
+            new Arena()
+        };
+        
+        return addins;
     }
 }

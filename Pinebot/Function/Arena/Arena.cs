@@ -1,10 +1,20 @@
-﻿namespace PineBot.Function;
+﻿namespace PineBot.Function.Arena;
 
-public class Arena
+public class Arena : Addin , IAddin
 {
     public List<Player> players = new List<Player>();
     public uint round = 0;
     public bool isMatch = false;
+
+    public string? OnMessage(object? sender, EventArgs e)
+    {
+        
+    }
+
+    public Func<string?, object?, EventArgs> GetResponseFunction()
+    {
+        return this.OnMessage;
+    }
 }
 
 public class Player
