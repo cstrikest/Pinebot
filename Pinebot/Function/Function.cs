@@ -1,9 +1,13 @@
-﻿namespace PineBot.Function;
+﻿using PineBot.Message;
 
-interface IAddin
+
+
+namespace PineBot.Function;
+
+public interface IAddin
 {
-    string? OnMessage();
-    Func<string?, object?, EventArgs> GetResponseFunction();
+    public void OnMessage(object? sender, MessageEventMessage e);
+    public EventHandler<MessageEventMessage> GetResponseFunction();
 }
 
 public class Addin

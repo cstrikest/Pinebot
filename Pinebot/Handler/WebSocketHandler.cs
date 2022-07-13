@@ -32,15 +32,8 @@ public class WebSocketHandler
             };
             socket.OnMessage = message =>
             {
-                Console.WriteLine(message);
-                try
-                {
-                    ReceiveJsonEvent?.Invoke(this, new EventMessage(JObject.Parse(message)));
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Json处理异常。");
-                }
+                Console.WriteLine(message); 
+                ReceiveJsonEvent?.Invoke(this, new EventMessage(JObject.Parse(message)));
             };
         });
     }

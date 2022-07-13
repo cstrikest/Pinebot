@@ -34,14 +34,13 @@ font":0,"group_id":705124696,"message":"晋哥哥刀削面","message_type":"grou
 */
     }
 
-    public List<Addin> LoadFunctions()
+    public void LoadFunctions(List<IAddin> addins)
     {
         //注册Arena的OnMessage方法进入MessageEventHandler事件。
-        var addins = new List<Addin>()
+
+        foreach (var addin in addins)
         {
-            new Arena()
-        };
-        
-        return addins;
+            MessageEventHandler += addin.GetResponseFunction();
+        }
     }
 }

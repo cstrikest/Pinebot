@@ -30,7 +30,7 @@ public class MessageEventMessage : EventMessage
     public string SubType { get; }
     public long MessageId { get; }
     public long UserId{get;}
-    public JObject? Message { get; }
+    public string Message { get; }
     public string rawMessage { get; }
     public int font { get; }
     public JObject? sender { get; }
@@ -41,10 +41,10 @@ public class MessageEventMessage : EventMessage
         SubType = (string)J["sub_type"];
         MessageId = (long)J["message_id"];
         UserId = (long)J["user_id"];
-        Message = JObject.Parse((string)J["message"]);
+        Message= (string)J["message"];
         rawMessage = (string)J["raw_message"];
         font = (int)J["font"];
-        sender = JObject.Parse((string)J["sender"]);
+        sender = (JObject)J["sender"];
     } 
     
 }

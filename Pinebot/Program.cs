@@ -4,16 +4,15 @@ using Newtonsoft.Json.Linq;
 using PineBot.Util;
 using PineBot.Handler;
 using PineBot.Message;
+using PineBot.Function;
+using PineBot.Function.Arena;
 
 namespace PineBot
 {
-    
-
     internal class Program
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("正在初始化机器人...");
             WebSocketHandler s;
             try
@@ -27,7 +26,11 @@ namespace PineBot
             }
 
             var handler = new MessageHandler();
-            handler.LoadFuncions();
+            var addins = new List<IAddin>
+            {
+                new Arena()
+            };
+            handler.LoadFunctions(addins);
             s.ReceiveJsonEvent += handler.OnMessage;
 
             while (true)
